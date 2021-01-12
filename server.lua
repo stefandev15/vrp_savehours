@@ -31,6 +31,13 @@ function vRPsaveHoursS.updateHoursPlayed(hours)
   hoursPlayed[user_id] = hoursPlayed[user_id] + hours
 end
 
+RegisterCommand('ore', function(source)
+    local user_id = vRP.getUserId(source)
+    if user_id ~= nil then
+        vRPclient.notify(source,{"Ai ~b~"..vRP.getUserHoursPlayed(user_id).." ~w~ore jucate pe server!"})
+    end 
+end)
+
 AddEventHandler('vRP:playerSpawn',function(user_id, source, first_spawn)
   if first_spawn then
     MySQL.query('vRP/get_vrp_users_info', {user_id = user_id}, function(rows, affected) hoursPlayed[user_id] = tonumber(rows[1].hoursPlayed) end)
