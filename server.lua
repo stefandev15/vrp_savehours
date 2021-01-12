@@ -32,7 +32,7 @@ function vRPsaveHoursS.updateHoursPlayed(hours)
 end
 
 RegisterCommand('ore', function(source)
-    local user_id = vRP.getUserId(source)
+    local user_id = vRP.getUserId({source})
     if user_id ~= nil then
         vRPclient.notify(source,{"Ai ~b~"..vRP.getUserHoursPlayed(user_id).." ~w~ore jucate pe server!"})
     end 
