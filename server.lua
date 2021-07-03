@@ -12,6 +12,7 @@ vRPclient = Tunnel.getInterface('vRP','vrp_savehours')
 
 MySQL.createCommand('vRP/get_vrp_users_info','SELECT * FROM vrp_users WHERE id = @user_id')
 MySQL.createCommand('vRP/update_hours_played','UPDATE vrp_users SET hoursPlayed = hoursPlayed + @hours WHERE id = @user_id')
+MySQL.SingleQuery("ALTER TABLE vrp_users ADD IF NOT EXISTS hoursPlayed FLOAT NOT NULL DEFAULT 0")
 MySQL.createCommand('vRP/saveh_column', 'ALTER TABLE vrp_users ADD IF NOT EXISTS hoursPlayed FLOAT NOT NULL DEFAULT 0')
 MySQL.query('vRP/saveh_column')
 
